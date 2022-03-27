@@ -1,7 +1,10 @@
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
+      backgroundImage: {
+        'hero-pattern-desktop': 'url(../public/bg-header-desktop.svg)',
+      },
       colors: {
         primary: '#5BA4A4',
         neutral: {

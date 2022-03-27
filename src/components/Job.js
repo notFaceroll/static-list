@@ -1,42 +1,34 @@
 import React from 'react';
-import Card from './Card';
+import Tag from './Tag';
 
-// Job description:
-// Company logo and name, tagged if new/featured
-// Role
-// Post date, work Schedule/type, location
-// Tags for filtering
-
-const Job = (props) => {
+const Job = ({ job }) => {
   return (
-    <div className="shadow-xl rounded-m flex items-center mx-auto p-4 max-w-4xl rounded-md">
+    <li className="shadow-xl flex items-center p-4 max-w-4xl rounded-md bg-white">
       {/* Logo da empresa */}
       <div className="w-14 h-14 bg-black mx-4 rounded-full"></div>
 
       {/* Job specs */}
       <div className="mr-auto">
         <div className="flex justify-between">
-          <h2 className=' text-primary font-semibold text-sm'>Photosnap</h2>
-          <div>New!</div>
-          <div>Featured</div>
+          <h2 className=" text-primary font-semibold text-sm">{job.company}</h2>
+          {job.new && <div>New!</div>}
+          {job.featured && <div>Featured</div>}
         </div>
         <h3 className="colors-neutral-veryDarkGrayCyan font-bold text-neutral-veryDarkGrayishCyan">
-          Senior Frontend Developer
+          {job.role}
         </h3>
         <div className=" text-neutral-darkGrayishCyan">
-          1d ago - Full time - USA only
+          {job.posted} - {job.work} - {job.location}
         </div>
       </div>
 
       {/* List of filtered tags */}
       <ul className="flex justify-between">
-        <li>Frontend</li>
-        <li>Senior</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
+        {job.tags.map((item, index) => (
+          <Tag key={index} tag={item} />
+        ))}
       </ul>
-    </div>
+    </li>
   );
 };
 

@@ -1,44 +1,53 @@
-import React, { Fragment, useContext } from 'react';
-import { atom, selector, useRecoilValue } from 'recoil';
-import { jobsData } from './JobsData';
+import React, { useState, useEffect, Fragment } from 'react';
 import Job from './Job';
-import { JobsContext } from '../store/jobs-context';
-
-// const jobsListState = atom({
-//   key: 'JobsList',
-//   default: jobsData,
-// });
-
-// const jobsListFilterState = atom({
-//   key: 'JobsListFilter',
-//   default: 'Show All',
-// });
-
-// const filteredJobsListState = selector({
-//   key: 'FilteredJobsList',
-//   get: ({ get }) => {
-//     const filter = get(jobsListFilterState);
-//     const list = get(jobsListState);
-
-//     switch (filter) {
-//       case 'NEW': {
-//         return list.filter((item) => item.new);
-//       }
-//       default:
-//         return list;
-//     }
-//   },
-// });
+import { jobsData } from './JobsData';
+import JobsFilter from './JobsFilter';
 
 export default function JobsList(props) {
-  //   const jobs = useRecoilValue(filteredJobsListState);
-  const jobCtx = useContext(JobsContext);
+  const [filters, setFilters] = useState([]);
+  const [jobs, setJobs] = useState(jobsData);
+
+  useEffect(() => {
+    if (filters.length > 0) {
+      const updatedList = jobs.filter((item) => {
+        return filters.every((f) => item.tags.includes(f));
+      });
+      setJobs(updatedList);
+      console.log('updated');
+    }
+    console.log('render');
+  }, [filters, setJobs]);
+
+  const addFilter = (tag) => {
+    const tagExists = filters.some((item) => item === tag);
+    if (tagExists) return;
+    setFilters([...filters, tag]);
+  };
+
+  const removeFilter = (tag) => {
+    const updatedFilters = filters.filter((item) => item !== tag);
+    setFilters(updatedFilters);
+    setJobs(jobsData);
+  };
+
+  const clearFilters = () => {
+    if (filters.length === 0) return;
+    setFilters([]);
+    setJobs(jobsData);
+  };
 
   return (
-    <ul className="flex flex-col gap-4 max-w-4xl mx-auto">
-      {jobCtx.jobsList.map((jobItem, index) => (
-        <Job key={index} job={jobItem} />
-      ))}
-    </ul>
+    <Fragment>
+      <JobsFilter
+        onRemove={removeFilter}
+        onClear={clearFilters}
+        filters={filters}
+      />
+      <ul className="flex flex-col gap-4 max-w-4xl mx-auto">
+        {jobs.map((jobItem, index) => (
+          <Job key={index} job={jobItem} onAddFilter={addFilter} />
+        ))}
+      </ul>
+    </Fragment>
   );
 }

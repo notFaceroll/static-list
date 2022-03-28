@@ -1,37 +1,37 @@
-import React, { useContext } from 'react';
-import { JobsContext } from '../store/jobs-context';
-import { jobsData } from './JobsData';
+import React from 'react';
 
-// Click on a tag, and display only the jobs with the same tag
-// The input can be a single array value inside of an object
-// Or multiple items of the same array
-// The output is an object value which contains the selected tag
-
-// Create a new array named 'Selected' with the chosen tags
-// Compare the Selected array with the 'tags' array inside each object
-// Those which match, return the object
-// Re-render new filtered array
-// Clicking on 'clear' button, set the render array to the default
-
-export default function JobsFilter(props) {
-  const updateFilter = ({ target: { value } }) => {
-    console.log('nothing');
+export default function JobsFilter({ onRemove, onClear, filters }) {
+  const removeFilterHandler = ({ target: { value } }) => {
+    console.log(value);
+    onRemove(value);
   };
 
-  const jobCtx = useContext(JobsContext);
-  const selectedTags = jobCtx.filterTags;
+  const clearFilterHandler = () => {
+    onClear();
+  };
 
   return (
-    <nav>
+    <header className="shadow-xl mx-auto h-16 p-4 max-w-4xl rounded-md mb-8 bg-white flex justify-between">
       <ul className="flex">
-        {selectedTags > 0 && selectedTags.map((tag) => <li>{tag}</li>)}
+        {filters.length > 0 &&
+          filters.map((tag, index) => (
+            <li key={index}>
+              <button
+                value={tag}
+                onClick={removeFilterHandler}
+                className="mx-2 cursor-pointer bg-neutral-background text-sm font-semibold text-primary p-2 rounded-md hover:bg-primary hover:text-white"
+              >
+                {tag}
+              </button>
+            </li>
+          ))}
       </ul>
       <button
         className=" font-semibold text-primary hover:underline"
-        onClick={() => console.log('click')}
+        onClick={clearFilterHandler}
       >
         Clear
       </button>
-    </nav>
+    </header>
   );
 }

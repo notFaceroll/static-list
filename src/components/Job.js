@@ -1,7 +1,7 @@
 import React from 'react';
 import Tag from './Tag';
 
-const Job = ({ job }) => {
+const Job = ({ job, onAddFilter }) => {
   return (
     <li className="shadow-xl flex items-center p-4 max-w-4xl rounded-md bg-white">
       {/* Logo da empresa */}
@@ -25,7 +25,7 @@ const Job = ({ job }) => {
       {/* List of filtered tags */}
       <ul className="flex justify-between">
         {job.tags.map((item, index) => (
-          <Tag key={index} tag={item} />
+          <Tag key={index} tag={item} onAddFilter={onAddFilter}/>
         ))}
       </ul>
     </li>

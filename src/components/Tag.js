@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
-import { JobsContext } from '../store/jobs-context';
+import React from 'react';
 
-export default function Tag({ tag }) {
-  const jobCtx = useContext(JobsContext);
+export default function Tag({ tag, onAddFilter }) {
 
   const tagHandler = () => {
-    jobCtx.addFilter(tag);
+    onAddFilter(tag);
   };
 
   return (

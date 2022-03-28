@@ -1,23 +1,18 @@
 import './App.css';
 import Header from './components/Header';
 
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+
 import JobsList from './components/JobsList';
+import JobsProvider from './store/JobsProvider';
 
 function App() {
   return (
-    <RecoilRoot>
-      <main className=" mt-8">
-        <Header />
-        <JobsList />
-      </main>
-    </RecoilRoot>
+    <JobsProvider>
+        <main className=" mt-8">
+          <Header />
+          <JobsList />
+        </main>
+    </JobsProvider>
   );
 }
 

@@ -1,6 +1,17 @@
+import PhotoSnapLogo from '../assets/photosnap.svg';
+import ManageLogo from '../assets/manage.svg';
+import AccountLogo from '../assets/account.svg';
+import EyecamLogo from '../assets/eyecam-co.svg';
+import FaceitLogo from '../assets/faceit.svg';
+import InsureLogo from '../assets/insure.svg';
+import LoopStudiosLogo from '../assets/loop-studios.svg';
+import MyHomeLogo from '../assets/myhome.svg';
+import ShortlyLogo from '../assets/shortly.svg';
+import TheAirFilterLogo from '../assets/the-air-filter-company.svg';
+
 export const jobsData = [
   {
-    logo: '',
+    logo: PhotoSnapLogo,
     company: 'Photosnap',
     new: true,
     featured: true,
@@ -11,7 +22,7 @@ export const jobsData = [
     tags: ['Frontend', 'Senior', 'HTML', 'CSS', 'JavaScript'],
   },
   {
-    logo: '',
+    logo: ManageLogo,
     company: 'Manage',
     new: true,
     featured: true,
@@ -22,7 +33,7 @@ export const jobsData = [
     tags: ['Fullstack', 'Midweight', 'Python', 'React'],
   },
   {
-    logo: '',
+    logo: AccountLogo,
     company: 'Account',
     new: false,
     featured: false,
@@ -33,7 +44,7 @@ export const jobsData = [
     tags: ['Frontend', 'Junior', 'React', 'Sass', 'JavaScript'],
   },
   {
-    logo: '',
+    logo: MyHomeLogo,
     company: 'MyHome',
     new: false,
     featured: false,
@@ -44,7 +55,7 @@ export const jobsData = [
     tags: ['Frontend', 'Junior', 'CSS', 'JavaScript'],
   },
   {
-    logo: '',
+    logo: LoopStudiosLogo,
     company: 'Loop Studios',
     new: false,
     featured: false,
@@ -55,8 +66,8 @@ export const jobsData = [
     tags: ['Fullstack', 'Midweight', 'JavaScript', 'Sass', 'Ruby'],
   },
   {
-    logo: '',
-    company: 'Facefelt',
+    logo: FaceitLogo,
+    company: 'Faceit',
     new: false,
     featured: false,
     role: 'Junior Backend Developer',
@@ -66,7 +77,7 @@ export const jobsData = [
     tags: ['Backend', 'Junior', 'Ruby', 'RoR'],
   },
   {
-    logo: '',
+    logo: ShortlyLogo,
     company: 'Shortly',
     new: false,
     featured: false,
@@ -77,7 +88,7 @@ export const jobsData = [
     tags: ['Frontend', 'Junior', 'HTML', 'Sass', 'Javascript'],
   },
   {
-    logo: '',
+    logo: InsureLogo,
     company: 'Insure',
     new: false,
     featured: false,
@@ -88,7 +99,7 @@ export const jobsData = [
     tags: ['Frontend', 'Junior', 'HTML', 'Sass', 'Javascript'],
   },
   {
-    logo: '',
+    logo: EyecamLogo,
     company: 'Eyecam Co.',
     new: false,
     featured: false,
@@ -99,7 +110,7 @@ export const jobsData = [
     tags: ['Fullstack', 'Midweight', 'JavaScript', 'Django', 'Python'],
   },
   {
-    logo: '',
+    logo: TheAirFilterLogo,
     company: 'The Air Filter Company',
     new: false,
     featured: false,

@@ -38,12 +38,12 @@ export default function JobsList(props) {
 
   return (
     <Fragment>
-      <JobsFilter
+     {filters.length > 0 && <JobsFilter
         onRemove={removeFilter}
         onClear={clearFilters}
         filters={filters}
-      />
-      <ul className="flex flex-col gap-4 max-w-4xl mx-auto">
+      />}
+      <ul className="flex flex-col gap-12 sm:gap-4 max-w-4xl mx-auto">
         {jobs.map((jobItem, index) => (
           <Job key={index} job={jobItem} onAddFilter={addFilter} />
         ))}

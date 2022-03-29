@@ -1,4 +1,5 @@
 import React from 'react';
+import CloseTagImage from '../assets/icon-remove.svg';
 
 export default function JobsFilter({ onRemove, onClear, filters }) {
   const removeFilterHandler = ({ target: { value } }) => {
@@ -11,23 +12,24 @@ export default function JobsFilter({ onRemove, onClear, filters }) {
   };
 
   return (
-    <header className="shadow-xl mx-auto h-16 p-4 max-w-4xl rounded-md mb-8 bg-white flex justify-between">
-      <ul className="flex">
+    <header className="shadow-xl mx-auto min-h-16 p-4 max-w-4xl rounded-md mb-12 sm:mb-6 bg-white flex justify-between">
+      <ul className="flex flex-wrap gap-3">
         {filters.length > 0 &&
           filters.map((tag, index) => (
-            <li key={index}>
-              <button
+            <li key={index} className='flex bg-neutral-background overflow-hidden rounded-md'>
+              <p className='text-xs font-bold text-primary p-2'>{tag}</p>
+              <button 
                 value={tag}
                 onClick={removeFilterHandler}
-                className="mx-2 cursor-pointer bg-neutral-background text-sm font-semibold text-primary p-2 rounded-md hover:bg-primary hover:text-white"
+                className="cursor-pointer px-2 bg-primary hover:bg-neutral-veryDarkGrayishCyan"
               >
-                {tag}
+                <img className='max-w-full block' alt='' src={CloseTagImage}/>
               </button>
             </li>
           ))}
       </ul>
       <button
-        className=" font-semibold text-primary hover:underline"
+        className="text-sm font-semibold text-neutral-darkGrayishCyan hover:underline"
         onClick={clearFilterHandler}
       >
         Clear

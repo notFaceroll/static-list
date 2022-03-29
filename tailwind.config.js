@@ -2,6 +2,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
+      fontFamily: {
+        'spartan': ['Spartan', 'sans-serif'],
+      },
       backgroundImage: {
         'hero-pattern-desktop': 'url(../public/bg-header-desktop.svg)',
       },

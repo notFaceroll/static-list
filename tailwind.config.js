@@ -2,14 +2,15 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
     extend: {
-      boxShadow: {
-        '3xl': 'rgba(149, 157, 255, 0.2) 0px 8px 24px;'
+      width: {
+        'dynamic': 'clamp(3rem, 90vw, 56rem)'
       },
       fontFamily: {
         'spartan': ['Spartan', 'sans-serif'],
       },
       backgroundImage: {
         'hero-pattern-desktop': 'url(../public/bg-header-desktop.svg)',
+        'hero-pattern-mobile': 'url(../public/bg-header-mobile.svg)'
       },
       colors: {
         primary: '#5BA4A4',
